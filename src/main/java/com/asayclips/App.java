@@ -15,7 +15,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 /**
  * $ java -jar target/salonultimate-to-qbo-1.0-SNAPSHOT.jar {date MM/dd/YYYY} {store #(UT104,UT201 or UT202)}
  */
-public class App 
+public class App
 {
     private static String _userHome = System.getProperty("user.home");
 
@@ -89,7 +89,7 @@ public class App
     }
 
     private static SimpleDateFormat _shortDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-    private static SimpleDateFormat _longDateFormat = new SimpleDateFormat("EEEE yyyy-MM-dd");
+    private static SimpleDateFormat _longDateFormat = new SimpleDateFormat("EEEE MM/dd/yyyy");
 
     private File findStoreAnalysisReport(String date, String storeNumber) throws Exception
     {
