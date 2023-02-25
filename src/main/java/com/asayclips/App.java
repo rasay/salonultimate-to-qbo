@@ -89,19 +89,18 @@ public class App
     }
 
     private static SimpleDateFormat _shortDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-    private static SimpleDateFormat _longDateFormat = new SimpleDateFormat("EEEE MM/dd/yyyy");
 
     private File findStoreAnalysisReport(String date, String storeNumber) throws Exception
     {
         File file = null;
-        String targetLongDate = _longDateFormat.format(_shortDateFormat.parse(date));
+        String targetDate = _shortDateFormat.format(_shortDateFormat.parse(date));
 
         File dir = new File(_userHome + "/Downloads/");
         for (File f : dir.listFiles())
         {
             if (f.getName().startsWith("Store_Analysis")
                     && f.getName().endsWith(".xls")
-                    && isTheRightStoreAnalysisFile(f, targetLongDate, storeNumber))
+                    && isTheRightStoreAnalysisFile(f, targetDate, storeNumber))
             {
                 System.out.printf("Found store analysis report for store: %s (%s) %s%n",
                         storeNumber, date, f.getAbsolutePath());
@@ -128,7 +127,7 @@ public class App
             if (!storeNumber.toLowerCase().equals(row.getCell(1).toString().toLowerCase()))
                 return false;
 
-            row = sheet.getRow(5);
+            row = sheet.getRow(1);
 
             for (int i=1; i<8; i++)
                 if (date.equals(row.getCell(i).getStringCellValue()))
